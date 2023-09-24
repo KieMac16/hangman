@@ -39,6 +39,7 @@ class Hangman:
 
 def play_game(word_list):
     hangman_game = Hangman(word_list,num_lives=5)
+    user_guess = hangman_game.ask_for_input()
     while True:
         if hangman_game.num_lives == 0:
             print("You have lost!")
@@ -49,7 +50,6 @@ def play_game(word_list):
             hangman_game.num_lives > 0 and hangman_game.num_letters < 1
             print("Congratulations, you've won!")
             break
-    user_guess = hangman_game.ask_for_input()
-
+        
 my_word_list = ['banana','apple','pineapple','strawberry','grape']
 play_game(my_word_list)
