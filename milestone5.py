@@ -23,7 +23,7 @@ class Hangman:
         else:
             self.num_lives -= 1
             print(f"Sorry, {user_guess} is not in the word. Try again")
-            print (f"You have {self.num_lives} left.")
+            print (f"You have {self.num_lives} lives left.")
 
     def ask_for_input(self):
         '''A function to ask for input that accepts a single alphabetical character and returns the check_user_guess function'''
@@ -39,13 +39,12 @@ class Hangman:
 
 def play_game(word_list):
     hangman_game = Hangman(word_list,num_lives=5)
-    user_guess = hangman_game.ask_for_input()
     while True:
         if hangman_game.num_lives == 0:
             print("You have lost!")
             break
         elif hangman_game.num_letters > 0:
-            hangman_game.ask_for_input
+            hangman_game.ask_for_input()
         else:
             hangman_game.num_lives > 0 and hangman_game.num_letters < 1
             print("Congratulations, you've won!")
