@@ -1,7 +1,7 @@
 import random
 
 class Hangman:
-    '''Define the necessary attributes'''
+    '''Define the necessary attributes, using self as the first parameter'''
     def __init__(self, word_list, num_lives=5):
         self.word_list = word_list
         self.word = random.choice(self.word_list).lower()
@@ -11,7 +11,9 @@ class Hangman:
         self.list_of_guesses = []
     
     def check_user_guess(self,user_guess):
-        '''A function to check the users guess against the random word'''
+        '''A function to check the users guess against the random word
+        
+        If the guess is correct, a message states this. If not, number of lives are reduced by 1'''
         if user_guess in self.word:
             print(f"Good guess! {user_guess} is in the word")
             for index, letter in enumerate(self.word):
