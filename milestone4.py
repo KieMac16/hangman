@@ -12,10 +12,16 @@ class Hangman:
     
     def check_user_guess(self,user_guess):
         '''A function to check the users guess against the random word'''
-        if user_guess in random_word:
+        if user_guess in self.word:
             print(f"Good guess! {user_guess} is in the word")
+            for index, letter in enumerate(self.word):
+                if letter == user_guess:
+                    self.word_guessed[index] = user_guess
+            self.num_letters -= 1
         else:
-            print(f"Sorry, guess is not in the word. Try again")
+            self.num_lives -= 1
+            print(f"Sorry, {user_guess} is not in the word. Try again")
+            print (f"You have {self.num_lives} left.")
 
     def ask_for_input(self):
         '''A function to ask for input that accepts a single alphabetical character and returns the check_user_guess function'''
