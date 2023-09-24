@@ -13,7 +13,7 @@ class Hangman:
     def check_user_guess(self,user_guess):
         '''A function to check the users guess against the random word
         
-        If the guess is correct, a message states this. If not, number of lives are reduced by 1'''
+        If the guess is correct, a message is given to the user. If not, number of lives are reduced by 1'''
         if user_guess in self.word:
             print(f"Good guess! {user_guess} is in the word")
             for index, letter in enumerate(self.word):
@@ -37,6 +37,7 @@ class Hangman:
             self.list_of_guesses.append(user_guess)
 
 def play_game(word_list):
+    '''A function is used outside the class to call the game'''
     hangman_game = Hangman(word_list,num_lives=5)
     while True:
         if hangman_game.num_lives == 0:
@@ -45,10 +46,11 @@ def play_game(word_list):
         elif hangman_game.num_letters > 0:
             hangman_game.ask_for_input()
         else:
-            hangman_game.num_lives > 0 and hangman_game.num_letters < 1
+            hangman_game.num_lives > 0 and hangman_game.num_letters == 0
             print("Congratulations, you've won!")
             break
 
-if __name__ == '__main__':        
-    my_word_list = ['banana','apple','pineapple','strawberry','grape']
+if __name__ == '__main__':
+    '''This allows the file to be imported and used with a users own word list, but if we run it directly it will use the following fruit list:'''      
+    my_word_list = ['pear','apricot','orange','mango','grape']
     play_game(my_word_list)
