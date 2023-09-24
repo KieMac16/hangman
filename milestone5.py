@@ -10,6 +10,9 @@ class Hangman:
         self.num_letters = len(self.word)
         self.list_of_guesses = []
     
+    def print_word(self):
+        print(''.join(self.word_guessed))
+
     def check_user_guess(self,user_guess):
         '''A function to check the users guess against the random word
         
@@ -39,18 +42,20 @@ class Hangman:
 def play_game(word_list):
     '''A function is used outside the class to call the game'''
     hangman_game = Hangman(word_list,num_lives=5)
+    print (f"The word has {hangman_game.num_letters} letters.")
+    hangman_game.print_word()
     while True:
         if hangman_game.num_lives == 0:
             print("You have lost!")
             break
-        elif hangman_game.num_letters > 0:
-            hangman_game.ask_for_input()
-        else:
-            hangman_game.num_lives > 0 and hangman_game.num_letters == 0
+        elif '_' not in hangman_game.word_guessed:
             print("Congratulations, you've won!")
             break
+        else:
+            hangman_game.ask_for_input()
+            hangman_game.print_word()
 
 if __name__ == '__main__':
     '''This allows the file to be imported and used with a users own word list, but if we run it directly it will use the following fruit list:'''      
-    my_word_list = ['pear','apricot','orange','mango','grape']
+    my_word_list = ['apple','banana','strawberry','pineapple','grapefruit']
     play_game(my_word_list)
