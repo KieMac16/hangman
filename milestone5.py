@@ -48,6 +48,7 @@ def play_game(word_list):
             hangman_game.num_lives > 0 and hangman_game.num_letters < 1
             print("Congratulations, you've won!")
             break
-        
-my_word_list = ['banana','apple','pineapple','strawberry','grape']
-play_game(my_word_list)
+
+if __name__ == '__main__':        
+    my_word_list = ['banana','apple','pineapple','strawberry','grape']
+    play_game(my_word_list)
