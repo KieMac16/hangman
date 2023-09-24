@@ -27,15 +27,14 @@ class Hangman:
 
     def ask_for_input(self):
         '''A function to ask for input that accepts a single alphabetical character and returns the check_user_guess function'''
-        while True:
-            user_guess = input("Guess a letter: ")
-            if not user_guess.isalpha or len(user_guess) != 1:
-                print("Invalid letter. Please enter a single alphabetical character")
-            elif user_guess in self.list_of_guesses:
-                print("You already tried that letter!")
-            else:
-                self.check_user_guess(user_guess)
-                self.list_of_guesses.append(user_guess)
+        user_guess = input("Guess a letter: ")
+        if not user_guess.isalpha or len(user_guess) != 1:
+            print("Invalid letter. Please enter a single alphabetical character")
+        elif user_guess in self.list_of_guesses:
+            print("You already tried that letter!")
+        else:
+            self.check_user_guess(user_guess)
+            self.list_of_guesses.append(user_guess)
 
 def play_game(word_list):
     hangman_game = Hangman(word_list,num_lives=5)
